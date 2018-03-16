@@ -17,7 +17,7 @@
 
 // convenient constants for TimeChangeRules
 enum week_t {Last, First, Second, Third, Fourth}; 
-enum dow_t {Sun=1, Mon, Tue, Wed, Thu, Fri, Sat};
+enum dow_t {Sun=0, Mon, Tue, Wed, Thu, Fri, Sat};
 enum month_t {Jan=1, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec};
 
 // structure to describe rules for when daylight/summer time begins,
