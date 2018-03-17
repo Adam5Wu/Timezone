@@ -12,10 +12,12 @@
     #include <avr/eeprom.h>
 #endif
 
+TimeChangeRule Timezone::UTC = {"UTC",1u,0u,0u,0u,0};
+
 /*----------------------------------------------------------------------*
  * Create a Timezone object from the given time change rules.           *
  *----------------------------------------------------------------------*/
-Timezone::Timezone(TimeChangeRule dstStart, TimeChangeRule stdStart)
+Timezone::Timezone(TimeChangeRule const &dstStart, TimeChangeRule const &stdStart)
 {
     m_dst = dstStart;
     m_std = stdStart;
@@ -154,7 +156,7 @@ void Timezone::calcTimeChanges(int yr)
  * Convert the given time change rule to a time_t value                 *
  * for the given year.                                                  *
  *----------------------------------------------------------------------*/
-time_t Timezone::toTime_t(TimeChangeRule r, int yr)
+time_t Timezone::toTime_t(TimeChangeRule const &r, int yr)
 {
     uint8_t m = r.month;     // temp copies of r.month and r.week
     uint8_t w = r.week;
@@ -188,7 +190,7 @@ time_t Timezone::toTime_t(TimeChangeRule r, int yr)
 /*----------------------------------------------------------------------*
  * Read or update the daylight and standard time rules from RAM.        *
  *----------------------------------------------------------------------*/
-void Timezone::setRules(TimeChangeRule dstStart, TimeChangeRule stdStart)
+void Timezone::setRules(TimeChangeRule const &dstStart, TimeChangeRule const &stdStart)
 {
     m_dst = dstStart;
     m_std = stdStart;
