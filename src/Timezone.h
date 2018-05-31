@@ -35,9 +35,9 @@ struct TimeChangeRule
 class Timezone
 {
     public:
-		static TimeChangeRule UTC;
+        static TimeChangeRule UTC;
         Timezone(TimeChangeRule const &dstStart = UTC,
-			TimeChangeRule const &stdStart = UTC);
+            TimeChangeRule const &stdStart = UTC);
         Timezone(int address);
         time_t toLocal(time_t utc);
         time_t toLocal(time_t utc, TimeChangeRule **tcr);
@@ -45,7 +45,8 @@ class Timezone
         bool utcIsDST(time_t utc);
         bool locIsDST(time_t local);
         void setRules(TimeChangeRule const &dstStart, TimeChangeRule const &stdStart);
-		void readRules(int address);
+        void getRules(TimeChangeRule &dstStart, TimeChangeRule &stdStart);
+        void readRules(int address);
         void writeRules(int address);
 
     private:

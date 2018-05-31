@@ -188,7 +188,7 @@ time_t Timezone::toTime_t(TimeChangeRule const &r, int yr)
 }
 
 /*----------------------------------------------------------------------*
- * Read or update the daylight and standard time rules from RAM.        *
+ * Update the daylight and standard time rules from RAM.        *
  *----------------------------------------------------------------------*/
 void Timezone::setRules(TimeChangeRule const &dstStart, TimeChangeRule const &stdStart)
 {
@@ -198,6 +198,12 @@ void Timezone::setRules(TimeChangeRule const &dstStart, TimeChangeRule const &st
     m_stdUTC = 0;
     m_dstLoc = 0;
     m_stdLoc = 0;
+}
+
+void Timezone::getRules(TimeChangeRule &dstStart, TimeChangeRule &stdStart)
+{
+    dstStart = m_dst;
+    stdStart = m_std;
 }
 
 #ifdef __AVR__
